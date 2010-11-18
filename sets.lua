@@ -6,12 +6,8 @@
 --]]
 
 -- Stolen from OneBag, since my bitflag knowledge could be better
--- BAGTYPE_QUIVER = Quiver + Ammo
-local BAGTYPE_QUIVER = 0x0001 + 0x0002 
--- BAGTYPE_SOUL = Soul Bags
-local BAGTYPE_SOUL = 0x004
 -- BAGTYPE_PROFESSION = Leather + Inscription + Herb + Enchanting + Engineering + Gem + Mining
-local BAGTYPE_PROFESSION = 0x0008 + 0x0010 + 0x0020 + 0x0040 + 0x0080 + 0x0200 + 0x0400 
+local BAGTYPE_PROFESSION = 0x0008 + 0x0010 + 0x0020 + 0x0040 + 0x0080 + 0x0200 + 0x0400
 
 local CombuctorSet = Combuctor:GetModule('Sets')
 local L = LibStub('AceLocale-3.0'):GetLocale('Combuctor')
@@ -20,20 +16,14 @@ local L = LibStub('AceLocale-3.0'):GetLocale('Combuctor')
 --the all category (player, bagType filters)
 CombuctorSet:Register(L.All, 'Interface/Icons/INV_Misc_EngGizmos_17', function() return true end)
 CombuctorSet:RegisterSubSet(L.All, L.All)
-CombuctorSet:RegisterSubSet(L.Normal, L.All, nil, function(player, bagType) 
-	return bagType and bagType == 0 
+CombuctorSet:RegisterSubSet(L.Normal, L.All, nil, function(player, bagType)
+	return bagType and bagType == 0
 end)
-CombuctorSet:RegisterSubSet(L.Trade, L.All, nil, function(player, bagType) 
+CombuctorSet:RegisterSubSet(L.Trade, L.All, nil, function(player, bagType)
 	return bagType and bit.band(bagType, BAGTYPE_PROFESSION) > 0
 end)
-CombuctorSet:RegisterSubSet(L.Shards, L.All, nil, function(player, bagType) 
-	return bagType and bit.band(bagType, BAGTYPE_SOUL) > 0
-end)
-CombuctorSet:RegisterSubSet(L.Ammo, L.All, nil, function(player, bagType) 
-	return bagType and bit.band(bagType, BAGTYPE_QUIVER) > 0
-end)
-CombuctorSet:RegisterSubSet(L.Keys, L.All, nil, function(player, bagType) 
-	return bagType and bagType == 256 
+CombuctorSet:RegisterSubSet(L.Keys, L.All, nil, function(player, bagType)
+	return bagType and bagType == 256
 end)
 
 
@@ -116,23 +106,6 @@ local function isRecipe(player, bagType, name, link, quality, level, ilvl, type,
 	return type == L.Recipe
 end
 CombuctorSet:RegisterSubSet(L.Recipe, L.TradeGood, nil, isRecipe)
-
-
---ammo (all bags)
-local function isProjectile(player, bagType, name, link, quality, level, ilvl, type, subType, stackCount, equipLoc)
-	return type == L.Projectile
-end
-CombuctorSet:Register(L.Projectile, 'Interface/Icons/INV_Misc_Ammo_Bullet_01', isProjectile)
-CombuctorSet:RegisterSubSet(L.All, L.Projectile)
-
-
---shards (all bags)
-local function isShard(player, bagType, name, link, quality, level, ilvl, type, subType, stackCount, equipLoc)
-	return link and (link:match('%d+') == '6265')
-end
-CombuctorSet:Register(L.SoulShard, 'Interface/Icons/INV_Misc_Gem_Amethyst_02', isShard)
-CombuctorSet:RegisterSubSet(L.All, L.SoulShard)
-
 
 --misc
 local function isMiscItem(player, bagType, name, link, quality, level, ilvl, type, subType, stackCount, equipLoc)
