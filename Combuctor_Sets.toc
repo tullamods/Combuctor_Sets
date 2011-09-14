@@ -1,5 +1,5 @@
 ## Interface: 40200
-## Title: Combuctor: Basic Sets
+## Title: |cff20ff20Combuctor Basic Sets|r
 ## Author: Tuller
 ## Notes: Basic sets for Combuctor
 ## Dependencies: Combuctor

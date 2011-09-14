@@ -1,4 +1,4 @@
-﻿--[[
+--[[
 	Sets.lua
 		Basic set types for combuctor
 
@@ -8,13 +8,11 @@
 -- Stolen from OneBag, since my bitflag knowledge could be better
 -- BAGTYPE_PROFESSION = Leather + Inscription + Herb + Enchanting + Engineering + Gem + Mining
 local BAGTYPE_PROFESSION = 0x0008 + 0x0010 + 0x0020 + 0x0040 + 0x0080 + 0x0200 + 0x0400 + 0x8000 
-
 local CombuctorSet = Combuctor:GetModule('Sets')
 local L = LibStub('AceLocale-3.0'):GetLocale('Combuctor')
 
 
 --the all category (player, bagType filters)
-CombuctorSet:Register(L.All, 'Interface/Icons/INV_Misc_EngGizmos_17', function() return true end)
 CombuctorSet:RegisterSubSet(L.All, L.All)
 CombuctorSet:RegisterSubSet(L.Normal, L.All, nil, function(player, bagType)
 	return bagType and bagType == 0
