@@ -5,9 +5,6 @@
 		setRule(player, bagType, name, link, quality, level, ilvl, type, subType, stackCount, equipLoc)
 --]]
 
--- Stolen from OneBag, since my bitflag knowledge could be better
--- BAGTYPE_PROFESSION = Leather + Inscription + Herb + Enchanting + Engineering + Gem + Mining
-local BAGTYPE_PROFESSION = 0x0008 + 0x0010 + 0x0020 + 0x0040 + 0x0080 + 0x0200 + 0x0400 + 0x8000 
 local CombuctorSet = Combuctor:GetModule('Sets')
 local L = LibStub('AceLocale-3.0'):GetLocale('Combuctor')
 
@@ -18,7 +15,7 @@ CombuctorSet:RegisterSubSet(L.Normal, L.All, nil, function(player, bagType)
 	return bagType and bagType == 0
 end)
 CombuctorSet:RegisterSubSet(L.Trade, L.All, nil, function(player, bagType)
-	return bagType and bit.band(bagType, BAGTYPE_PROFESSION) > 0
+	return bagType and bit.band(bagType, Combuctor.TRADE_TYPE) > 0
 end)
 
 

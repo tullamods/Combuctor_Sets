@@ -1,6 +1,6 @@
-## Interface: 40200
-## Title: |cff20ff20Combuctor Basic Sets|r
-## Author: Tuller
+## Interface: 50400
+## Title: |cff5FC412Combuctor Basic Sets|r
+## Author: Tuller and Jaliborc (João Cardoso)
 ## Notes: Basic sets for Combuctor
 ## Dependencies: Combuctor
 sets.lua
