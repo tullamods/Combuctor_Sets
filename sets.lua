@@ -36,7 +36,7 @@ CombuctorSet:RegisterSubSet(L.Trinket, L.Equipment, nil, isTrinket)
 
 
 -- Usables
-local function isUsable(player, bagType, name, link, quality, level, ilvl, type)
+local function isUsable(player, bagType, name, link, quality, level, ilvl, type, subType)
 	if type == L.Consumable then
 		return true
 	elseif type == L.TradeGood then
@@ -68,7 +68,7 @@ CombuctorSet:RegisterSubSet(ALL, L.Quest)
 
 
 -- Trade Goods
-local function isTradeGood(player, bagType, name, link, quality, level, ilvl, type)
+local function isGeneralTradeGood(player, bagType, name, link, quality, level, ilvl, type, subType)
 	if type == L.TradeGood then
 		return not(subType == L.Devices or subType == L.Explosives)
 	end
@@ -88,7 +88,7 @@ local function isRecipe(player, bagType, name, link, quality, level, ilvl, type)
 	return type == L.Recipe
 end
 
-CombuctorSet:Register(L.TradeGood, 'Interface/Icons/INV_Fabric_Silk_02', isTradeGood)
+CombuctorSet:Register(L.TradeGood, 'Interface/Icons/INV_Fabric_Silk_02', isGeneralTradeGood)
 CombuctorSet:RegisterSubSet(ALL, L.TradeGood)
 CombuctorSet:RegisterSubSet(L.TradeGood, L.TradeGood, nil, isTradeGood)
 CombuctorSet:RegisterSubSet(L.Gem, L.TradeGood, nil, isGem)
