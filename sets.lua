@@ -37,11 +37,7 @@ CombuctorSet:RegisterSubSet(L.Trinket, L.Equipment, nil, isTrinket)
 
 -- Usables
 local function isUsable(player, bagType, name, link, quality, level, ilvl, type, subType)
-	if type == L.Consumable then
-		return true
-	elseif type == L.TradeGood then
-		return subType == L.Devices or subType == L.Explosives
-	end
+	return type == L.Consumable
 end
 
 local function isConsumable(player, bagType, name, link, quality, level, ilvl, type)
@@ -59,7 +55,6 @@ end
 CombuctorSet:Register(L.Usable, 'Interface/Icons/INV_Potion_93', isUsable)
 CombuctorSet:RegisterSubSet(ALL, L.Usable)
 CombuctorSet:RegisterSubSet(L.Consumable, L.Usable, nil, isConsumable)
-CombuctorSet:RegisterSubSet(L.Devices, L.Usable, nil, isDevice)
 
 
 -- Questing
@@ -70,7 +65,7 @@ CombuctorSet:RegisterSubSet(ALL, L.Quest)
 -- Trade Goods
 local function isGeneralTradeGood(player, bagType, name, link, quality, level, ilvl, type, subType)
 	if type == L.TradeGood then
-		return not(subType == L.Devices or subType == L.Explosives)
+		return true
 	end
 
 	return type == L.Recipe or type == L.Gem
