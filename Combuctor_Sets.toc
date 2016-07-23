@@ -1,8 +1,8 @@
-## Interface: 60200
-## Title: |cff5FC412Combuctor Basic Sets|r
+## Interface: 70000
+## Title: Combuctor Basic Sets
 ## Author: Tuller and Jaliborc (João Cardoso)
 ## Notes: Basic sets for Combuctor
 ## Dependencies: Combuctor
-## Version: 6.1
+## Version: 7.0
 
 sets.lua
